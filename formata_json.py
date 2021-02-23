@@ -12,7 +12,7 @@ class JsonFy:
         data = self.__read.select_DB(horas_de_coleta=tempo_coleta)
         host_geradores = defaultdict(list)
         for row_db in data:
-            hostname_db, data_hora_db, angulo_db, temperatura_db= row_db
+            hostname_db, data_hora_db, angulo_db, temperatura_db = row_db
 
             host_geradores[hostname_db].append({
                 "timestamp": datetime.timestamp(data_hora_db),
@@ -23,6 +23,8 @@ class JsonFy:
                  })
 
         return host_geradores
+
+print(JsonFy().json_data(3))
 
 '''  def json_minMaxMed_data(self, dias):
         pcdData = []

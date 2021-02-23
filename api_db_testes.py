@@ -2,17 +2,15 @@
 from flask import Flask, request, jsonify
 from time import sleep
 from database import DATABASE
-from avaliaDados import AVALIADOR
 from formata_json import JsonFy
 """ # thread
 import threading
  """
 
 app = Flask(__name__)
-avaliar = AVALIADOR()
 
 
-@ app.route('/geradores/select/horas/<horas>')
+@ app.route('/ada_api/select/horas/<horas>')
 def status(horas):
     status1 = JsonFy().json_data(tempo_coleta=float(horas))
     return {"ADA_stress": status1}
@@ -30,11 +28,10 @@ def status_medias_horas(horas):
     return {"geradores_status": status3} '''
 
 
-@app.route('/ADA_api/insert', methods=['POST'])
+@app.route('/ada_api/insert', methods=['POST'])
 def atualizabanco():
     dados = request.get_json()
     DATABASE().insert_DB(**dados)
-    #avaliar.avalia(**dados)
     return dados
 
 

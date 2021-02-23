@@ -32,10 +32,10 @@ class DATABASE:
         tempo = data.strftime("%Y-%m-%d %H:%M:%S")
         conn = self.connect
         cur = conn.cursor()
-        cur.execute(
-            f'SELECT hostname, data_hora, angulo, temperatura FROM ada_testes_temperatura_tbl where data_hora > "{tempo}" order by data_hora desc;')
-        # cur.execute(f'SELECT * FROM tb_airquality order by ID desc')
+        cur.execute(f'SELECT hostname, data_hora, angulo, temperatura FROM ada_testes_temperatura_tbl where data_hora > "{tempo}" order by data_hora desc;')
+        # cur.execute(f'SELECT * FROM ada_testes_temperatura_tbl order by ID desc')
         row_list = []
+        print(row_list)
         for data in cur:
             row_list.append(data)
 
@@ -43,6 +43,7 @@ class DATABASE:
         conn.close()
         return row_list
 
+print(DATABASE().select_DB(6))
     
 
 
