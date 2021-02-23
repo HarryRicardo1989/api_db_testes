@@ -12,25 +12,19 @@ class JsonFy:
         data = self.__read.select_DB(horas_de_coleta=tempo_coleta)
         host_geradores = defaultdict(list)
         for row_db in data:
-            hostname_db, data_hora_db, temperatura_ar_db, temperatura_orvalho_db, umidade_db, pressao_local_db,correnteFaseA_db,correnteFaseB_db, correnteFaseC_db, correnteNeutro_db, statusEnergia_db = row_db
+            hostname_db, data_hora_db, temperatura_db, angulo_db= row_db
 
             host_geradores[hostname_db].append({
                 "timestamp": datetime.timestamp(data_hora_db),
                 "hostname": hostname_db,
-                "temperatura_ar": temperatura_ar_db,
-                "temperatura_orvalho": temperatura_orvalho_db,
-                "umidade": umidade_db,
-                "pressao_local": pressao_local_db,
-                "corrente_Fase_A": correnteFaseA_db,
-                "corrente_Fase_B": correnteFaseB_db,
-                "corrente_Fase_C": correnteFaseC_db,
-                "corrente_Neutro": correnteNeutro_db,
-                "status_Energia" : statusEnergia_db
+                "temperatura_ar": temperatura_db,
+                "angulo": angulo_db,
+                
                  })
 
         return host_geradores
 
-    def json_minMaxMed_data(self, dias):
+'''  def json_minMaxMed_data(self, dias):
         pcdData = []
         data = self.__read.min_max_med_DB(dias)
         host_geradores2 = defaultdict(list)
@@ -110,4 +104,4 @@ class JsonFy:
                 "max_status_energia":float(max_status_energia),
                 "med_status_energia":float(med_status_energia),
             })
-        return host_geradores3
+        return host_geradores3'''

@@ -15,10 +15,10 @@ avaliar = AVALIADOR()
 @ app.route('/geradores/select/horas/<horas>')
 def status(horas):
     status1 = JsonFy().json_data(tempo_coleta=float(horas))
-    return {"geradores_status": status1}
+    return {"ADA_stress": status1}
 
 
-@ app.route('/geradores/select/dias/<dias>')
+''' @ app.route('/geradores/select/dias/<dias>')
 def status_medias(dias):
     status2 = JsonFy().json_minMaxMed_data(float(dias))
     return {"geradores_status": status2}
@@ -27,16 +27,16 @@ def status_medias(dias):
 @ app.route('/geradores/select/horasmedia/<horas>')
 def status_medias_horas(horas):
     status3 = JsonFy().json_minMaxMedHora_data(float(horas))
-    return {"geradores_status": status3}
+    return {"geradores_status": status3} '''
 
 
-@app.route('/geradores/insert', methods=['POST'])
+@app.route('/ADA_api/insert', methods=['POST'])
 def atualizabanco():
     dados = request.get_json()
     DATABASE().insert_DB(**dados)
-    avaliar.avalia(**dados)
+    #avaliar.avalia(**dados)
     return dados
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9002, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=9003, debug=False, threaded=True)
