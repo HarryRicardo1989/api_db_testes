@@ -12,7 +12,7 @@ class JsonFy:
         data = self.__read.select_DB(horas_de_coleta=tempo_coleta)
         host_geradores = defaultdict(list)
         for row_db in data:
-            hostname_db, data_hora_db, temperatura_db, angulo_db= row_db
+            hostname_db, data_hora_db, angulo_db, temperatura_db= row_db
 
             host_geradores[hostname_db].append({
                 "timestamp": datetime.timestamp(data_hora_db),

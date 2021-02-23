@@ -33,7 +33,7 @@ class DATABASE:
         conn = self.connect
         cur = conn.cursor()
         cur.execute(
-            f'SELECT hostname, data_hora, temperatura, FROM ada_testes_temperatura_tbl where data_hora > "{tempo}" order by data_hora desc;')
+            f'SELECT hostname, data_hora, angulo, temperatura FROM ada_testes_temperatura_tbl where data_hora > "{tempo}" order by data_hora desc;')
         # cur.execute(f'SELECT * FROM tb_airquality order by ID desc')
         row_list = []
         for data in cur:
